@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz — Multiple Choice & True/False</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      font-family:'Poppins', Arial, sans-serif;
+      background:linear-gradient(135deg,#0078d7,#00c6ff);
+      color:#333;
+      min-height:100vh;
+      display:flex;flex-direction:column;
+      overflow-x:hidden;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color:#0a2965;color:white;
+      display:flex;justify-content:space-between;
+      align-items:center;padding:14px 24px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    }
+    .logo {font-size:22px;font-weight:bold;letter-spacing:1px;}
+    nav ul {list-style:none;display:flex;gap:20px;}
+    nav ul li a {color:white;text-decoration:none;font-size:16px;transition:color 0.3s ease;}
+    nav ul li a:hover {color:#00c6ff;}
+
+    /* Main Layout */
+    .container {width:100%;max-width:1000px;margin:auto;padding:30px;}
+    .quiz {
+      background:white;border-radius:15px;padding:20px;margin-top:30px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    }
+    h2 {color:#0a2965;margin-bottom:15px;}
+
+    .question {margin-bottom:25px;}
+    .choices {display:flex;flex-direction:column;gap:10px;}
+    .choice {
+      background:#f0f4ff;padding:12px;border-radius:8px;
+      cursor:pointer;border:1px solid transparent;
+      transition:all 0.25s ease;
+    }
+    .choice:hover {background:#e0ecff;transform:scale(1.02);}
+    .choice.selected {border-color:#0078d7;background:#d7ebff;}
+
+    .btn-row {margin-top:10px;display:flex;gap:10px;justify-content:center;}
+    button {
+      cursor:pointer;padding:10px 18px;border:none;border-radius:8px;
+      font-weight:bold;transition:all 0.3s ease;
+    }
+    .btn-primary {background:#0078d7;color:white;}
+    .btn-primary:hover {background:#005fa3;transform:translateY(-2px);}
+    .btn-secondary {background:white;color:#0078d7;border:2px solid #0078d7;}
+    .btn-secondary:hover {background:#eaf4ff;}
+
+    /* Result Styling */
+    #mc-result, #tf-result {
+      margin-top:15px;
+      font-size:18px;
+      font-weight:bold;
+      text-align:center;
+      color:#0a2965;
+      transition:color 0.6s ease;
+    }
+    .correct-result {color:green;}
+    .incorrect-result {color:red;}
+    small {
+      display:block;
+      margin-top:10px;
+      font-size:14px;
+      color:#333;
+      text-align:left;
+    }
+
+    footer {
+      background-color:#0a2965;color:white;
+      text-align:center;padding:10px;margin-top:auto;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MyScienceHub</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lesson.html">Lessons</a></li>
+      <li><a href="mutil.html">Multiple Choice</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div id="mc" class="quiz">
+      <h2>Multiple Choice Quiz</h2>
+      <div id="mc-quiz"></div>
+      <div class="btn-row">
+        <button id="mc-submit" class="btn-primary">Submit</button>
+        <button id="mc-reset" class="btn-secondary">Reset</button>
+      </div>
+      <div id="mc-result"></div>
+    </div>
+
+    <div id="tf" class="quiz">
+      <h2>True or False Quiz</h2>
+      <div id="tf-quiz"></div>
+      <div class="btn-row">
+        <button id="tf-submit" class="btn-primary">Submit</button>
+        <button id="tf-reset" class="btn-secondary">Reset</button>
+      </div>
+      <div id="tf-result"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 MyScienceHub | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const mcQuestions = [
+      {id:1,q:'နျူကလိယနှင့် အနီးဆုံးအခွံမှာ?',choices:['K','L','M','N'],answer:0,detail:'နျူကလိယအနီးဆုံးအခွံကို K shell ဟုခေါ်သည်။'},
+      {id:2,q:'အောက်ဆီဂျင်အက်တမ်၏ အီလက်ထရွန်ဖွဲ့တည်ပုံမှာ?',choices:['(2.7)','(2.8.1)','(2.6)','(2.8.7)'],answer:2,detail:'Oxygen has 8 electrons distributed as 2 in K shell and 6 in L shell.'},
+      {id:3,q:'M အခွံ၏နံပါတ်မှာ?',choices:['1','2','3','4'],answer:2,detail:'M shell is the 3rd energy level.'},
+      {id:4,q:'နျူကလိယကို လည့်ပတ်သွားလာနိုင်သည့်အဓိကအခွံ(ပတ်လမ်း)များကို?',choices:['K,L,M,N','N,M,L,K','L,K,N,M','K,N,M,L'],answer:0,detail:'K,L,M,N စသည်ဖြင့် အမည်ပေးထားသည်။'},
+      {id:5,q:'ကလိုရင်း၏ အီလက်ထရွန် ဖွဲ့တည်ပုံမှာ?',choices:['(2.6)','(2.8.1)','(2.8.7)','(2.4)'],answer:2,detail:'ကလိုရင်း၏ အီလက်ထရွန်ဖွဲ့တည်ပုံမှာ(2.8.7)'}
+    ];
+
+    const tfQuestions = [
+      {id:1,q:'နျူကလိယနှင့် အနီးဆုံးအခွံမှာ K ဖြစ်သည်။',answer:true,detail:'Correct — K shell is the innermost.'},
+      {id:2,q:'L အခွံ၏ပတ်လမ်းနံပါတ်မှာ 1 ဖြစ်သည်။',answer:false,detail:'False — L shell is the second shell, with n=2.'},
+      {id:3,q:'M အခွံနံပါတ်မှာ 3 ဖြစ်သည်။',answer:true,detail:'Yes, M is the third shell.'},
+      {id:4,q:'နူကလိယနှင့်အနီးဆုံးအခွံ K Shell သည် စွမ်းအင်အနိမ့်ဆုံးဖြစ်သည်။',answer:true,detail:'Correct, it has the lowest energy.'},
+      {id:5,q:'အောက်ဆီဂျင်အက်တမ်၏ အီလက်ထရွန်ဖွဲ့တည်ပုံမှာ (2.8) ဖြစ်သည်။',answer:false,detail:'No, it’s (2.6) for oxygen.'}
+    ];
+
+    const mcContainer = document.getElementById('mc-quiz');
+    const tfContainer = document.getElementById('tf-quiz');
+    const userMCAnswers = {}, userTFAnswers = {};
+
+    function el(tag,attr={},...children){
+      const e=document.createElement(tag);
+      for(const k in attr){
+        if(k.startsWith('on')) e.addEventListener(k.slice(2),attr[k]);
+        else if(k==='html') e.innerHTML=attr[k];
+        else e.setAttribute(k,attr[k]);
+      }
+      children.forEach(c=>{
+        if(typeof c==='string') e.appendChild(document.createTextNode(c));
+        else if(c) e.appendChild(c);
+      });
+      return e;
+    }
+
+    function renderMC(){
+      mcContainer.innerHTML='';
+      mcQuestions.forEach((q,idx)=>{
+        const qbox=el('div',{class:'question'});
+        qbox.appendChild(el('p',{},`${idx+1}. ${q.q}`));
+        const choices=el('div',{class:'choices'});
+        q.choices.forEach((c,i)=>{
+          const ch=el('div',{class:'choice',onclick:()=>selectMC(q.id,i)},c);
+          choices.appendChild(ch);
+        });
+        qbox.appendChild(choices);
+        mcContainer.appendChild(qbox);
+      });
+    }
+
+    function renderTF(){
+      tfContainer.innerHTML='';
+      tfQuestions.forEach((q,idx)=>{
+        const qbox=el('div',{class:'question'});
+        qbox.appendChild(el('p',{},`${idx+1}. ${q.q}`));
+        const choices=el('div',{class:'choices'});
+        const t=el('div',{class:'choice',onclick:()=>selectTF(q.id,true)},'True');
+        const f=el('div',{class:'choice',onclick:()=>selectTF(q.id,false)},'False');
+        choices.appendChild(t);choices.appendChild(f);
+        qbox.appendChild(choices);
+        tfContainer.appendChild(qbox);
+      });
+    }
+
+    function selectMC(qid,idx){
+      userMCAnswers[qid]=idx;
+      renderMC();
+      const q = mcQuestions.find(q=>q.id===qid);
+      const box = mcContainer.children[mcQuestions.indexOf(q)];
+      box.querySelectorAll('.choice')[idx].classList.add('selected');
+    }
+
+    function selectTF(qid,bool){
+      userTFAnswers[qid]=bool;
+      renderTF();
+      const q = tfQuestions.find(q=>q.id===qid);
+      const box = tfContainer.children[tfQuestions.indexOf(q)];
+      const pick = bool?0:1;
+      box.querySelectorAll('.choice')[pick].classList.add('selected');
+    }
+
+    // Handle submit buttons
+    document.getElementById('mc-submit').addEventListener('click',()=>{
+      let correct=0; let detailHTML='';
+      mcQuestions.forEach(q=>{
+        if(userMCAnswers[q.id]===q.answer){correct++; detailHTML+=`<span class="correct-result">✅ ${q.q} — ${q.detail}</span><br>`;}
+        else detailHTML+=`<span class="incorrect-result">❌ ${q.q} — ${q.detail}</span><br>`;
+      });
+      const result=document.getElementById('mc-result');
+      result.innerHTML=`<div>${correct}/${mcQuestions.length} Correct</div><small>${detailHTML}</small>`;
+    });
+
+    document.getElementById('tf-submit').addEventListener('click',()=>{
+      let correct=0; let detailHTML='';
+      tfQuestions.forEach(q=>{
+        if(userTFAnswers[q.id]===q.answer){correct++; detailHTML+=`<span class="correct-result">✅ ${q.q} — ${q.detail}</span><br>`;}
+        else detailHTML+=`<span class="incorrect-result">❌ ${q.q} — ${q.detail}</span><br>`;
+      });
+      const result=document.getElementById('tf-result');
+      result.innerHTML=`<div>${correct}/${tfQuestions.length} Correct</div><small>${detailHTML}</small>`;
+    });
+
+    document.getElementById('mc-reset').addEventListener('click',()=>{
+      for(const k in userMCAnswers) delete userMCAnswers[k];
+      renderMC(); document.getElementById('mc-result').innerHTML='';
+    });
+    document.getElementById('tf-reset').addEventListener('click',()=>{
+      for(const k in userTFAnswers) delete userTFAnswers[k];
+      renderTF(); document.getElementById('tf-result').innerHTML='';
+    });
+
+    renderMC();
+    renderTF();
+  </script>
+</body>
+</html>

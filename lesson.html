@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lessons | My Website</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #0a2965;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00bfff;
+    }
+
+    /* Lessons Section */
+    .lessons {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .lessons h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .lesson-card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .lesson-card h2 {
+      color: #0078d7;
+      margin-bottom: 10px;
+    }
+
+  * {
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e7e3e3;
+            margin: 0;
+            padding: 20px;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .grid-container{
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            padding: 0 10px;
+            /* background-color: aqua; */
+        }
+        .product{
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .product img{
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .product h3 {
+            font-size: 16px;
+            margin: 10px 0 5px;
+        }
+        .product p {
+            font-size: 14px;
+            color: #555;
+        }
+      
+    /* Footer */
+    footer {
+      background-color: #0a2965;
+      color: white;
+      text-align: center;
+      padding: 12px 0;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .lessons {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MyScienceHub</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lesson.html">Lessons</a></li>
+      <li><a href="mutil.html">Multiple Choice</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="lessons">
+    <h1>Our Lessons</h1>
+
+    <div class="lesson-card">
+      <h2>အီလက်ထရွန်ပတ်လမ်းများနှင့် အီလက်ထရွန်ဖွဲ့တည်ပုံများ(Shells and Electronic Structures)</h2>
+      <p>Learn the basics of HTML, including tags, elements, and how to build a simple web page structure.</p>
+    </div>
+
+    <div class="lesson-card">
+      <h2>အဓိကအခွံ (ပတ်လမ်း) များ (Main Shells or Orbits)</h2>
+      <p>အီလက်ထရွန်များ နျူကလိယကို လည့်ပတ်သွားလာနိုင်သည့်အဓိကအခွံများ ကို K,L,M,N စသည်ဖြင့် အမည်ပေးထားပြီး ယင်းတို့၏ ပတ်လမ်းနံပတ်မှာ 1,2,3,4 အသီးသီးဖြစ်ကြသည်။ နျူကလိယနှင့် အနီးဆုံးအခွံမှာ K ဖြစ်ပြီး ပတ်လမ်းနံပတ်မှာ 1 ဖြစ်သည်။ ယင်းနောက် L အခွံ၏ပတ်လမ်းနံပတ်မှာ 2 ဖြစ်ပြီး M အခွံနံပါတ်မှာ 3 စသည်ဖြင့်သတ်မှတ်ထားကြသည်။</p>
+      <p>အခွံတစ်ခုစီတိုင်းတွင် သတ်မှတ်ထားသော စွမ်းအင်အဆင့်များ ရှိကြသည်။ နျူကလိယနှင့် အနီးဆုံးအခွံ(K shell)သည် စွမ်းအင်အနိမ့်ဆုံးဖြစ်သည်။ အက်တမ်တစ်ခု၏ အဓိကပတ်လမ်း များအတွင်း အများဆုံးတည်ရှိနိုင်သောအီလက်ထရွန်အရေအတွက်များကို2nပုံသေနည်းဖြင့်တွက်ယူနိုင်သည်။</p>
+      <div class="grid-container">
+        <div class="product">
+          <img src="electron2.jpg" alt="Electron">
+          <h3>Electron</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <h2>အီလက်ထရွန်ဖွဲ့တည်ပုံများ(Electronic Structures)</h2>
+      <p>   ဒြပ်စဉ်တစ်ခုတွင် အီလက်ထရွန်များ ဖြန့်ဝေနေခြင်းကို ထိုဒြပ်စဉ်၏ အီလက်ထရွန်ဖွဲတည်ပုံဟုခေါ်သည်။ အီလက်ထရွန်များကို နူကလိယနှင့်အနီးဆုံးအခွံ(K shell)တွင်စဖြည့်သည်။ K shell တွင်သတ်မှတ်အီလက်ထရွန် ပြည့်ပြီးနောက် ဒုတိယအခွံ(K shell)ကို ဆက်၍ ဖြည့်သည်။ ဤသို့ဖြင့် အခွံတစ်ခုပြီး ဆက်ရမည်။
+      </p>
+       <p>  ဥပမာ အောက်ဆီဂျင်အက်တမ်၏ အီလက်ထရွန်ဖွဲ့တည်ပုံမှာ (2.6)ဖြစ်သည်။ ပထမကိန်းပြည့် ၂ သည် ပထမအခွံ(K shell) တွင် အီလက်ထရွန် ၂ လုံးရှိ‌ကြောင်းနှင့် ဒုတိယကိန်းပြည့် ၆ သည် ဒုတိယအခွံ(L shell) တွင် အီလက်ထရွန် ၆ လုံး လှည့်ပတ်နေကြာင်းညွှန်ပြနေကြောင်းတွေ့ရသည်။အီလက်ထရွန်ဖွဲ့တည်ပုံကို ပုံဖြင့်လည်းကောင်း ကိန်းဖြင့်လည်းကောင်း ဖော်ပြနိုင်ကြောငး အောက်ဆီဂျင်၊ ဆိုဒီယမ်နှင့် ကလိုရင်းအက်တမ်များဖြင့်ဥပမာပေး၍ ဖော်ပြထားသည်။ </p>
+       <div class="grid-container">
+        <div class="product">
+            <img src="O.jpg" alt="Oxeygen">
+            <h3>O(2.6)</h3>
+        </div>
+        <div  class="product">
+            <img src="Na.jpg" alt="Sodium">
+            <h3>Na(2.8.1)</h3>
+        </div>
+        <div  class="product">
+            <img src="cl.jpg" alt="Clorine">
+            <h3>Cl(2.8.7)</h3>
+        </div>
+    </div>
+    <div class="text-container">
+       <p style="border: 6px inset grey">အောက်ဆီဂျင်၊ ဆိုဒီယမ်နှင့် ကလိုရင်းအက်တမ်များ၏ အီလက်ထရွန်ဖွဲ့တည်ပုံများ</p>
+       <p></p>
+       </div>
+  </section>
+
+  <footer>
+    <p>© 2025 MyScienceHub | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

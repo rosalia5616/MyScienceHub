@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | MyQuizHub</title>
+  <style>
+    /* ===== Global Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #0078d7, #00c6ff);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Navigation Bar ===== */
+    nav {
+      background-color: #0a2965;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00c6ff;
+    }
+
+    /* ===== About Section ===== */
+    .about-container {
+      background: white;
+      max-width: 900px;
+      width: 90%;
+      margin: 60px auto;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.8s ease;
+    }
+
+    .about-container h1 {
+      text-align: center;
+      color: #0078d7;
+      margin-bottom: 25px;
+    }
+
+    .about-container p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .mission {
+      margin-top: 40px;
+      padding: 20px;
+      background: #f5faff;
+      border-left: 5px solid #0078d7;
+      border-radius: 10px;
+    }
+
+    .mission h2 {
+      color: #0078d7;
+      margin-bottom: 10px;
+    }
+
+    /* ===== Team Section ===== */
+    .team-section {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .team-section h2 {
+      color: #0078d7;
+      margin-bottom: 25px;
+    }
+
+    .team-members {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .member {
+      background: #f9f9f9;
+      width: 250px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .member:hover {
+      transform: translateY(-8px);
+    }
+
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .member h3 {
+      color: #0078d7;
+      margin-bottom: 5px;
+    }
+
+    .member p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #0a2965;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: auto;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .member {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">MyScienceHub</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lesson.html">Lessons</a></li>
+      <li><a href="mutil.html">Multiple Choice</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- About Section -->
+  <div class="about-container">
+    <h1>About MyScienceHub</h1>
+    <p>
+      Welcome to <strong>MyQuizHub</strong> — your space to learn, practice, and have fun!  
+      Our mission is to make education engaging and interactive through bite-sized lessons and exciting quizzes.
+    </p>
+
+    <p>
+      Whether you're learning new skills, preparing for exams, or just exploring knowledge for fun,  
+      MyQuizHub helps you grow your confidence and sharpen your mind through interactive experiences.
+    </p>
+
+    <div class="mission">
+      <h2>🎯 Our Mission</h2>
+      <p>
+        To make learning enjoyable and accessible for everyone by providing quick, meaningful lessons  
+        and quizzes that challenge your mind while rewarding your curiosity.
+      </p>
+    </div>
+
+    <div class="team-section">
+      <h2>Meet the Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="nawkhu.png">
+          <h3>Naw Khu Kapaw</h3>
+          <p>Founder & Web Developer</p>
+        </div>
+        <div class="member">
+          <img src="jullia.png" alt="Team Member">
+          <h3>Julia</h3>
+          <p>Designer & UI Specialist</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Team Member">
+          <h3>Daniel Park</h3>
+          <p>Content Creator</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MyScienceHub | Built with ❤️ for learners</p>
+  </footer>
+
+</body>
+</html>
